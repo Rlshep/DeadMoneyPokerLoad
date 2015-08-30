@@ -27,7 +27,7 @@ class SeasonDaoSpec extends Specification {
 
         expect: "Season 1 is returned"
         name == season.name
-        '2007' == season.startYear
+        2007 == season.startYear
         null != season.id
     }
 }

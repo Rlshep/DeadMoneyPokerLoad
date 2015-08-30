@@ -5,7 +5,7 @@ class Season {
 
     long id
     String name
-    String startYear
+    int startYear
 
     static constraints = {
         name(blank: false, unique: true)

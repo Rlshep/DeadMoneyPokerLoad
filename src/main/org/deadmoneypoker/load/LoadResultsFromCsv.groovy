@@ -57,13 +57,13 @@ class LoadResultsFromCsv {
         String [] fields;
         while ((fields = reader.readNext()) != null) {
             if (!fields[0].contains(HEADER_VALUE)) {
-//                println fields
+                println fields
                 def result = new Result(
                         seasonId: season.id,
                         datePlayed: loadDate,
                         playerName: fields[1],
-                        rank: fields[0],
-                        points: fields[2],
+                        rank: fields[0].toInteger(),
+                        points: fields[2].toInteger(),
                         winnings: (fields[38]) ? new BigDecimal(fields[38]) : BigDecimal.ZERO,
                         timeOut: (fields[32]) ? fields[32] : "",
                         roundOut: (fields[33]) ? fields[33] : 0,
@@ -88,5 +88,16 @@ class LoadResultsFromCsv {
         def date = path.substring(begin, end)
 
         Date.parse(DATE_FORMAT, date)
+    }
+
+    int stringToInt(field) {
+        def converted = field
+
+        if (field instanceof String) {
+            converted.replaceAll('"', '')
+            converted = converted.toInteger()
+        }
+
+        converted
     }
 }

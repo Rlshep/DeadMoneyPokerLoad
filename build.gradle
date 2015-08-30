@@ -33,8 +33,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-//task(loadResults, dependsOn: jar, type: JavaExec) {
-//    main = 'org.deadmoneypoker.load.LoadResultsFromCsv'
-//    args = [season]
-//    classpath = sourceSets.main.runtimeClasspath
-//}
+task(loadResults, dependsOn: jar, type: JavaExec) {
+    main = 'org.deadmoneypoker.load.LoadResultsFromCsv'
+    args = [season]
+    classpath = sourceSets.main.runtimeClasspath
+}
