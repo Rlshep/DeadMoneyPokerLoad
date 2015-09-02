@@ -57,7 +57,6 @@ class LoadResultsFromCsv {
         String [] fields;
         while ((fields = reader.readNext()) != null) {
             if (!fields[0].contains(HEADER_VALUE)) {
-                println fields
                 def result = new Result(
                         seasonId: season.id,
                         datePlayed: loadDate,
