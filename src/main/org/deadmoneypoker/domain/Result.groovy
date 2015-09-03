@@ -14,6 +14,7 @@ class Result {
     String roundOut
     int hits
     String hitmanName
+    boolean championshipInd
 
     static constraints = {
         playerName(blank: false)
@@ -21,5 +22,6 @@ class Result {
         timeOut(nullable: true)
         roundOut(nullable: true)
         hitmanName(nullable: true)
+        championshipInd(default: false)
     }
 }

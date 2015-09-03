@@ -35,6 +35,6 @@ dependencies {
 
 task(loadResults, dependsOn: jar, type: JavaExec) {
     main = 'org.deadmoneypoker.load.LoadResultsFromCsv'
-    args = [season]
+    args = [season, championship]
     classpath = sourceSets.main.runtimeClasspath
 }
