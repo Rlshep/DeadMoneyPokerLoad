@@ -12,21 +12,22 @@ class LoadResultsFromCsv {
     static final HEADER_VALUE = "Rank"
     static final DATE_FORMAT = 'yyyyMMdd'
 
-    ResultDao resultsDao = new ResultDao()
-    SeasonDao seasonsDao = new SeasonDao()
+    ResultDao resultsDao
+    SeasonDao seasonsDao
 
     static main(args) {
-        def loadResults = new LoadResultsFromCsv()
-
-        if (0 == args.length || null == args[0]) {
+        if (3 > args.length) {
             println 'Invalid options. Usage : java LoadResultsFromCsv <season name>'
             return;
         }
 
-        loadResults.saveAllResults(args[0], args[1])
+        def loadResults = new LoadResultsFromCsv()
+        loadResults.saveAllResults(args[0], args[1], args[2])
     }
 
-    void saveAllResults(seasonName, championship) {
+    void saveAllResults(seasonName, championship, env) {
+        resultsDao = new ResultDao(env)
+        seasonsDao = new SeasonDao(env)
         def results = getAllResultsFiles()
         def season = seasonsDao.getSeason(seasonName)
 
@@ -56,7 +57,7 @@ class LoadResultsFromCsv {
         CSVReader reader = new CSVReader(new FileReader(resultFile));
         String [] fields;
         while ((fields = reader.readNext()) != null) {
-            println fields
+//            println fields
             if (!fields[0].contains(HEADER_VALUE)) {
                 def result = new Result(
                         seasonId: season.id,

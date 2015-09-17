@@ -3,6 +3,11 @@ package org.deadmoneypoker.dao
 import org.deadmoneypoker.domain.Result
 
 class ResultDao extends DeadMoneyDao{
+
+    ResultDao(Object environment) {
+        super(environment)
+    }
+
     def insertResult(Result result) {
         def query = "insert into result (id, version, date_played, hitman_name, hits, player_name, points, rank, round_out, season_id, time_out, winnings, championship_ind) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         def keys = sql.executeInsert query, [getNextSequence(), 1, result.datePlayed.toTimestamp(), result.hitmanName, result.hits, result.playerName, result.points, result.rank, result.roundOut, result.seasonId.toInteger(), result.timeOut, result.winnings, result.championshipInd];
