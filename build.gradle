@@ -20,6 +20,12 @@ repositories {
 version "0.1"
 group "deadmoneypokerload"
 
+sourceSets {
+    main {
+        groovy { srcDir "src/main" }
+    }
+}
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // We use the latest groovy 2.x version for building this library

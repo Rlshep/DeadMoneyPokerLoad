@@ -7,7 +7,7 @@ import org.deadmoneypoker.dao.SeasonDao
 import org.deadmoneypoker.domain.Result
 
 class LoadResultsFromCsv {
-    static final DIR_PATH = '/Users/rlshep/Documents/The Tournament Director 2/Data/saves'
+    static final DIR_PATH = '/Users/Richard/Documents/The Tournament Director 2/Data/saves'
     static final FILE_SUFFIX = '.CSV'
     static final HEADER_VALUE = "Rank"
     static final DATE_FORMAT = 'yyyyMMdd'
@@ -17,7 +17,7 @@ class LoadResultsFromCsv {
 
     static main(args) {
         if (3 > args.length) {
-            println 'Invalid options. Usage : java LoadResultsFromCsv <season name>'
+            println 'Invalid options. Usage : gradle -Pseason="Season 8" -Pchampionship=N -Penv=dev loadResults'
             return;
         }
 
